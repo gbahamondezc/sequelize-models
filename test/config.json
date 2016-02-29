@@ -1,0 +1,20 @@
+{
+  "connection" : {
+    "host"     : "127.0.0.1",
+    "dialect"  : "mysql",
+    "username" : "root",
+    "schema"   : "sequelize_test",
+    "password" : ""
+  },
+  "models" : {
+    "autoLoad"          : true,
+    "recursiveLoad"     : true,
+    "autoAssoc"         : true
+  },
+  "sequelizeOptions" : {
+    "define" : {
+      "freezeTableName" : true,
+      "underscored"     : true
+    }
+  }
+}

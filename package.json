@@ -1,0 +1,130 @@
+{
+  "name": "sequelize-models",
+  "version": "1.0.0",
+  "description": "Node.js SequelizeJS ORM model utilities",
+  "homepage": "https://github.com/gbahamondez/sequelize-models",
+  "author": {
+    "name": "Gonzalo Bahamondez",
+    "email": "gonzalo.bahamondez@symphony.cl",
+    "url": "https://github.com/gbahamondez"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/sequelize-models.js",
+  "engines": {
+    "node": ">= 4"
+  },
+  "keywords": [
+    "sequelize",
+    "sequelizeJS",
+    "models",
+    "load",
+    "read",
+    "tables",
+    "utilities"
+  ],
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint-config-xo-space": "^0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-open": "^1.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-shell": "^0.5.2",
+    "jsdoc": "^3.4.0",
+    "minami": "^1.1.1",
+    "mysql": "~2.10.0",
+    "pg": "^4.4.6",
+    "pg-hstore": "^2.3.1",
+    "run-sequence": "^1.1.5",
+    "sqlite3": "^3.1.1",
+    "tedious": "^1.13.2"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true,
+      "node": true,
+      "es6": true
+    },
+    "rules": {
+      "eqeqeq": [
+        2,
+        "smart"
+      ],
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "double"
+      ],
+      "no-undef": [
+        2
+      ],
+      "no-unused-vars": [
+        2
+      ],
+      "no-eq-null": [
+        2
+      ],
+      "no-multi-spaces": [
+        0
+      ],
+      "space-in-parens": [
+        0
+      ],
+      "no-multiple-empty-lines": [
+        0
+      ],
+      "no-multi-str": [
+        0
+      ],
+      "key-spacing": [
+        0
+      ],
+      "array-bracket-spacing": [
+        0
+      ],
+      "object-curly-spacing": [
+        0
+      ],
+      "consistent-return": [
+        0
+      ],
+      "space-before-function-paren": [
+        0
+      ],
+      "padded-blocks": [
+        0
+      ],
+      "arrow-body-style": [
+        0
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbahamondez/sequelize-models.git"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.3.3",
+    "co": "^4.6.0",
+    "debug": "^2.2.0",
+    "lodash": "^4.5.1",
+    "readdir-plus": "^0.4.1",
+    "sequelize": "^3.19.3"
+  }
+}
