@@ -115,6 +115,9 @@
       ],
       "computed-property-spacing": [
         0
+      ],
+      "new-cap" : [
+        0
       ]
     }
   },

@@ -11,13 +11,13 @@ module.exports = {
         autoIncrement : true
       },
       name : {
-        type : Types.STRING,
+        type : Types.STRING
       },
       created_at: {
-        type : Types.DATE,
+        type : Types.DATE
       },
       updated_at: {
-        type : Types.DATE,
+        type : Types.DATE
       }
     })
     .then( function() {
@@ -32,10 +32,10 @@ module.exports = {
           type: Types.STRING
         },
         created_at: {
-          type: Types.DATE,
+          type: Types.DATE
         },
         updated_at: {
-          type: Types.DATE,
+          type: Types.DATE
         }
       });
 
@@ -55,7 +55,7 @@ module.exports = {
           type: Types.STRING
         },
         born_date: {
-          type: Types.DATE,
+          type: Types.DATE
         },
         profile_id: {
           type: Types.INTEGER,
@@ -67,10 +67,10 @@ module.exports = {
           onDelete : "restrict"
         },
         created_at: {
-          type: Types.DATE,
+          type: Types.DATE
         },
         updated_at: {
-          type: Types.DATE,
+          type: Types.DATE
         }
       });
 
@@ -102,10 +102,10 @@ module.exports = {
           onDelete : "restrict"
         },
         created_at : {
-          type : Types.DATE,
+          type : Types.DATE
         },
         updated_at: {
-          type: Types.DATE,
+          type: Types.DATE
         }
       });
     })
@@ -115,7 +115,7 @@ module.exports = {
   },
 
   // Revert tables creation
-  down: function(queryInterface, Types) {
+  down: function(queryInterface) {
     return queryInterface.dropAllTables();
   }
 
