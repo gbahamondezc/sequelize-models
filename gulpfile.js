@@ -1,6 +1,7 @@
 "use strict";
 
 var path             = require("path");
+var fs               = require("fs");
 var gulp             = require("gulp");
 var eslint           = require("gulp-eslint");
 var excludeGitignore = require("gulp-exclude-gitignore");
@@ -12,6 +13,44 @@ var coveralls        = require("gulp-coveralls");
 var open             = require("gulp-open");
 var shell            = require("gulp-shell");
 var sequence         = require("run-sequence");
+var config           = require("./test/config.js");
+var gutil            = require("gulp-util");
+
+
+
+function stringSrc( filename, string ) {
+  var src = require("stream").Readable({ objectMode : true });
+  src._read = function () {
+    this.push( new gutil.File({
+      cwd      : "",
+      base     : "",
+      path     : filename,
+      contents : new Buffer(string)
+    }));
+    this.push(null)
+  }
+  return src;
+}
+
+
+gulp.task("config", function(done) {
+
+  var jsonObject = {
+    development : {
+      username : config.connection.username,
+      password : config.connection.password,
+      database : config.connection.schema,
+      host     : config.connection.host,
+      dialect  : config.connection.dialect
+    }
+  };
+
+  var jsString = JSON.stringify(jsonObject, null, 2);
+
+  return stringSrc("config.json", jsString)
+    .pipe( gulp.dest("./test/config/"));
+
+});
 
 
 gulp.task("lint", function () {

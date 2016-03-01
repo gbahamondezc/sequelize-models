@@ -37,12 +37,14 @@
     "gulp-open": "^1.0.0",
     "gulp-plumber": "^1.0.0",
     "gulp-shell": "^0.5.2",
+    "gulp-util": "^3.0.7",
     "jsdoc": "^3.4.0",
     "minami": "^1.1.1",
     "mysql": "~2.10.0",
     "pg": "^4.4.6",
     "pg-hstore": "^2.3.1",
     "run-sequence": "^1.1.5",
+    "sequelize-cli": "^2.3.1",
     "sqlite3": "^3.1.1",
     "tedious": "^1.13.2"
   },
@@ -108,10 +110,10 @@
       "arrow-body-style": [
         0
       ],
-      "camelcase" : [
+      "camelcase": [
         0
       ],
-      "computed-property-spacing" : [
+      "computed-property-spacing": [
         0
       ]
     }
