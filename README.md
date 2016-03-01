@@ -1,4 +1,4 @@
-# sequelize-models  [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master)
+# sequelize-models  [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondez/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondez/sequelize-models)
 
 Node.js SequelizeJS ORM model utilities
 
