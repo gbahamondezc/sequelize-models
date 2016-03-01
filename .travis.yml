@@ -2,7 +2,14 @@ language: node_js
 node_js:
   - v5
   - v4
-  - '0.12'
-  - '0.10'
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - "mysql -e 'create database sequelize_test;'"
 
 script: "gulp"
