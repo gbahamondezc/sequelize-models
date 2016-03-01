@@ -31,47 +31,46 @@ describe("Should filter tables passed as first argument by name or attribs",
     it("Ignore common cases by column_name \
       ['updated_at', 'updatedAt','created_at', 'createdAt']", function () {
 
-        var sampleData = [{
-          name  : "table1",
-          column_name: "updated_at",
-        }, {
-          name  : "table2",
-          column_name: "updatedAt",
-        },{
-          name  : "table3",
-          column_name: "created_at",
-        }, {
-          name  : "table4",
-          column_name: "createdAt",
-        }];
+      var sampleData = [{
+        name  : "table1",
+        column_name: "updated_at"
+      }, {
+        name  : "table2",
+        column_name: "updatedAt"
+      }, {
+        name  : "table3",
+        column_name: "created_at"
+      }, {
+        name  : "table4",
+        column_name: "createdAt"
+      }];
 
-        assert( utils.filterTables(sampleData).length === 0 );
+      assert( utils.filterTables(sampleData).length === 0 );
     });
 
-     it("Ignore tables with table name 'SequelizeMeta'", function () {
 
-        var sampleData = [{
-          name  : "SequelizeMeta",
-          column_name: "some_column",
-        }];
-
-        assert( utils.filterTables(sampleData).length === 0 );
+    it("Ignore tables with table name 'SequelizeMeta'", function () {
+      var sampleData = [{
+        name  : "SequelizeMeta",
+        column_name: "some_column"
+      }];
+      assert( utils.filterTables(sampleData).length === 0 );
     });
+
 
     it("Ignore tables from given table name exclude array as second argument", function () {
 
-        var sampleData = [{
-          name  : "some_table",
-          column_name: "some_column",
-        },{
-          name  : "SequelizeMeta",
-          column_name: "some_column",
-        },{
-          name  : "table4",
-          column_name: "createdAt",
-        }];
+      var sampleData = [{
+        name  : "some_table",
+        column_name : "some_column"
+      }, {
+        name  : "SequelizeMeta",
+        column_name : "some_column"
+      }, {
+        name  : "table4",
+        column_name : "createdAt"
+      }];
 
-        assert( utils.filterTables( sampleData, ["some_table"]).length === 0 );
+      assert( utils.filterTables( sampleData, ["some_table"]).length === 0 );
     });
-
-})
+  });

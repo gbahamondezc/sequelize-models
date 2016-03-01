@@ -1,25 +1,23 @@
 "use strict";
 
 const SequelizeModels = require("../../");
-const config = require("../config.json");
 const assert = require("assert");
 
 
-var seqModels = new SequelizeModels(config);
-
 describe("Multiple find queries from automatically created Sequelize Models", function() {
 
-
   it("Find user by id 1", function(done) {
+    var seqModels = new SequelizeModels(require("../config.js"));
     seqModels.getSchema().then( schema => {
+
       schema.models.User.findById(1)
       .then(function(user) {
-        assert(user.name === "Gonzalo");
+        assert( user.name === "Gonzalo" );
         done();
       })
       .catch(function(err) {
         return done(err);
-      })
+      });
     })
     .catch( err => {
       return done(err);
@@ -29,11 +27,11 @@ describe("Multiple find queries from automatically created Sequelize Models", fu
 
 
   it("Find all profiles with name Technicians including his users", function(done) {
-
+    var seqModels = new SequelizeModels(require("../config.js"));
     seqModels.getSchema().then( schema => {
       schema.models.Profile.findAll({
         where : {
-          name  : "Technician",
+          name  : "Technician"
         },
         include : schema.models.User
       })
@@ -54,7 +52,9 @@ describe("Multiple find queries from automatically created Sequelize Models", fu
 
 
   it("Find all users with name Gonzalo including his profiles", function(done) {
-    seqModels.getSchema().then( schema => {
+    var mod = new SequelizeModels(require("../config.js"));
+    mod.getSchema().then( schema => {
+
       schema.models.User.findAll({
         where   : { name : "Gonzalo" },
         include : schema.models.Profile

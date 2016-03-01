@@ -107,6 +107,12 @@
       ],
       "arrow-body-style": [
         0
+      ],
+      "camelcase" : [
+        0
+      ],
+      "computed-property-spacing" : [
+        0
       ]
     }
   },
