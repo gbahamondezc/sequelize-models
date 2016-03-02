@@ -11,6 +11,7 @@ Node.js SequelizeJS ORM model utilities
 
 ```sh
 $ npm install --save sequelize-models
+$ npm install --save mysql
 ```
 
 ### Features
