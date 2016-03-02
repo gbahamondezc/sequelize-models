@@ -16,7 +16,7 @@ describe("Queries tests", function() {
       return done();
     })
     .catch( err => {
-      return done(err)
+      return done(err);
     });
   });
 
