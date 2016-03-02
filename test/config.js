@@ -8,8 +8,6 @@ module.exports = {
   },
   models : {
     autoLoad          : true,
-    autoAssoc         : true,
-    recursiveLoad     : false,
     defineFrom        : "/test/mysql/models"
   },
   sequelizeOptions : {
