@@ -1,4 +1,4 @@
-# sequelize-models  [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondez/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondez/sequelize-models)
+# sequelize-models  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondez/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondez/sequelize-models)
 
 Node.js SequelizeJS ORM model utilities
 
@@ -127,7 +127,8 @@ $ npm test
 
 MIT © [Gonzalo Bahamondez](https://github.com/gbahamondez)
 
-
+[npm-image]: https://badge.fury.io/js/sequelize-models.svg
+[npm-url]: https://npmjs.org/package/sequelize-models
 [travis-image]: https://travis-ci.org/gbahamondez/sequelize-models.svg?branch=master
 [travis-url]: https://travis-ci.org/gbahamondez/sequelize-models
 [daviddm-image]: https://david-dm.org/gbahamondez/sequelize-models.svg?theme=shields.io

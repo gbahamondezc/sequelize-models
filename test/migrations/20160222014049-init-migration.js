@@ -75,7 +75,7 @@ module.exports = {
       });
 
     })
-    .then(function() {
+    .then( function() {
       // Create table user_department
       return queryInterface.createTable("user_department", {
         id: {
