@@ -16,13 +16,19 @@ $ npm install --save sequelize-models
 ### Features
 
 * Auto load of Sequelize models from database schema.
+
 * Auto load models associations from database schema.
+
 * Simplified and meaningful model files syntax.
+
 * One place models and associations definitions.
-* MySQL support only for now (support for PostgreSQL and MSSQL as soon as possible!).
+
+* MySQL support only for now (support for PostgreSQL and MSSQL as soon as possible).
 
 
 ### Usage
+
+Config and get schema
 
 ```js
 
@@ -30,34 +36,32 @@ const SequelizeModels = require("sequelize-models");
 
 var seqModels  = new SequelizeModels({
   // Database connection options
-  "connection" : {
-    "host"     : "127.0.0.1",
-    "dialect"  : "mysql",
-    "username" : "root",
-    "schema"   : "sequelize_test",
-    "password" : ""
+  connection : {
+    host     : "127.0.0.1",
+    dialect  : "mysql",
+    username : "root",
+    schema   : "sequelize_test",
+    password : ""
   },
 
   // Models loading options
-  "models" : {
-    "autoLoad"          : true,
-    "autoAssoc"         : true,
-    "defineFrom"        : "./models"
+  models : {
+    autoLoad : true,
+    path     : "/models"
   },
 
   // Sequelize options passed directly to Sequelize constructor
-  "sequelizeOptions" : {
-    "define" : {
-      "freezeTableName" : true,
-      "underscored"     : true
+  sequelizeOptions : {
+    define : {
+      freezeTableName : true,
+      underscored     : true
     }
   }
 });
 
 
 seqModels.getSchema().then( schema => {
-
-  // schema.models && schema.db available here
+  // schema.models and schema.db available here
 })
 .catch( err => {
   // throwing error out of the promise
@@ -65,6 +69,42 @@ seqModels.getSchema().then( schema => {
 });
 ```
 
+Model Definition , file **models/User.js**
+
+```js
+module.exports = {
+
+  // Following http://docs.sequelizejs.com/en/latest/docs/models-definition/
+  tableName : "user",
+
+  attributes : {
+    name : {
+      type : "string"
+    },
+    last_name : {
+      type : "string"
+    },
+    born_date : {
+      type : "date"
+    }
+  },
+
+
+  // Associations -> http://docs.sequelizejs.com/en/latest/docs/scopes/#associations
+  associations : [{
+    type    : "belongsTo",
+    target  : "Profile",
+    options : {
+      foreignKey : "profile_id"
+    }
+  }],
+
+  validate : {},
+  indexes  : []
+};
+
+
+```
 
 ### Build and open code documentation
 ```bash

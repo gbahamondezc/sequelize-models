@@ -7,8 +7,8 @@ module.exports = {
     password : ""
   },
   models : {
-    autoLoad          : true,
-    defineFrom        : "/test/mysql/models"
+    autoLoad : true,
+    path     : "/test/mysql/models"
   },
   sequelizeOptions : {
     define : {
