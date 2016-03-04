@@ -115,14 +115,14 @@ $ npm install -g gulp && gulp docs
 ```
 
 ### Run Tests
-You need  edit **examples/config.json** with your own database connection params, before run the steps below.
+You need  edit **test/config.js** with your own database connection params, before run the steps below which are assuming that you created a database with the name sequelize_test.
 
 ```bash
-$ npm install gulp -g && npm install -g sequelize-cli
+$ npm install gulp -g && npm install
+$ mysql -e 'create database sequelize_test;'
 $ gulp config
-$ cd examples/mysql
-$ sequelize db:migrate
-$ npm test
+$ cd test && ../node_modules/sequelize-cli/bin/sequelize db:migrate && cd ..
+$ gulp test
 ```
 
 
