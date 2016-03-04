@@ -3,8 +3,7 @@
 
 Node.js SequelizeJS ORM model utilities.
 
-sequelize-models will try to load all your database tables and associations in Sequelize JS models automatically, but if you want define your models explicitly,  just create a model file and sequelize-models will skip the models automatic definition, use models.path to specify the models directory to read.
-
+sequelize-models will try to load all your database tables and associations in Sequelize JS models automatically, but if you want define your models explicitly,  just create a model file and sequelize-models will skip the models automatic definition for that table and will use your model file, use models.path to specify the models directory to read.
 
 
 ### Warning
