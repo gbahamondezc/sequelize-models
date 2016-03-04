@@ -4,7 +4,8 @@ module.exports = {
     dialect  : "mysql",
     username : "root",
     schema   : "sequelize_test",
-    password : ""
+    password : "",
+    port     : 3306
   },
   models : {
     autoLoad : true,
