@@ -1,6 +1,9 @@
-# sequelize-models  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondez/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondez/sequelize-models)
+# sequelize-models
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondez/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondez/sequelize-models)
 
-Node.js SequelizeJS ORM model utilities
+Node.js SequelizeJS ORM model utilities.
+
+sequelize-models will try to load all your database tables and associations in Sequelize JS models automatically, but if you want define your models explicitly,  just create a model file and sequelize-models will skip the models automatic definition, use models.path to specify the models directory to read.
 
 
 
