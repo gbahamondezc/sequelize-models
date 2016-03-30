@@ -12,12 +12,13 @@ var coveralls        = require("gulp-coveralls");
 var open             = require("gulp-open");
 var shell            = require("gulp-shell");
 var sequence         = require("run-sequence");
-var config           = require("./test/config.js");
+var configMySQL      = require("./test/mysql/config.js");
+var configPSQL       = require("./test/psql/config.js");
 var Gutil            = require("gulp-util");
+var del              = require("del");
 
 
-
-function stringSrc( filename, string ) {
+function stringSrc (filename, string) {
   var src = require("stream").Readable({ objectMode : true });
   src._read = function () {
     this.push( new Gutil.File({
@@ -31,24 +32,51 @@ function stringSrc( filename, string ) {
   return src;
 }
 
+gulp.task('clean-migrations', function() {
+  del('./migrations/*.js');
+});
 
-gulp.task("config", function() {
+gulp.task('cp-config-psql', function() {
+   gulp.src('./migrations_data/postgres/**/*.js')
+   .pipe(gulp.dest('./migrations'));
+});
 
+
+gulp.task('cp-config-mysql', function() {
+   gulp.src('./migrations_data/mysql/**/*.js')
+   .pipe(gulp.dest('./migrations'));
+});
+
+
+gulp.task("config-mysql", ['clean-migrations', 'cp-config-mysql'], function() {
   var jsonObject = {
     development : {
-      username : config.connection.username,
-      password : config.connection.password,
-      database : config.connection.schema,
-      host     : config.connection.host,
-      dialect  : config.connection.dialect
+      username : configMySQL.connection.username,
+      password : configMySQL.connection.password,
+      database : configMySQL.connection.schema,
+      host     : configMySQL.connection.host,
+      dialect  : configMySQL.connection.dialect
     }
   };
-
   var jsString = JSON.stringify(jsonObject, null, 2);
-
   return stringSrc("config.json", jsString)
-    .pipe( gulp.dest("./test/config/"));
+    .pipe( gulp.dest("./config/"));
+});
 
+
+gulp.task("config-psql", ['clean-migrations', 'cp-config-psql'], function() {
+  var jsonObject = {
+    development : {
+      username : configPSQL.connection.username,
+      password : configPSQL.connection.password,
+      database : configPSQL.connection.schema,
+      host     : configPSQL.connection.host,
+      dialect  : configPSQL.connection.dialect
+    }
+  };
+  var jsString = JSON.stringify(jsonObject, null, 2);
+  return stringSrc("config.json", jsString)
+    .pipe( gulp.dest("./config/"));
 });
 
 
@@ -104,6 +132,7 @@ gulp.task("test", [ "pre-test" ], function (cb) {
     .pipe( istanbul.writeReports())
     .on( "end", function () {
       cb( mochaErr );
+      process.exit();
     });
 });
 
@@ -120,7 +149,6 @@ gulp.task("coveralls", [ "test" ], function () {
   return gulp.src( path.join( __dirname, "coverage/lcov.info"))
     .pipe( coveralls());
 });
-
 
 gulp.task("prepublish", [ "nsp" ]);
 gulp.task("default", [ "lint", "test", "coveralls" ]);

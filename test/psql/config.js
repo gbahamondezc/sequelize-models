@@ -1,15 +1,16 @@
+
 module.exports = {
   connection : {
     host     : "127.0.0.1",
-    dialect  : "mysql",
-    username : "root",
+    dialect  : "postgres",
+    username : "postgres",
     schema   : "sequelize_test",
     password : "",
-    port     : 3306
+    port     : 5432
   },
   models : {
     autoLoad : true,
-    path     : "/test/mysql/models"
+    path     : "/test/psql/models"
   },
   sequelizeOptions : {
     define : {

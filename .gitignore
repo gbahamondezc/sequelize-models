@@ -7,5 +7,5 @@ coverage
 config
 .idea
 docs
-
+migrations
 

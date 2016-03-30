@@ -26,7 +26,7 @@ $ npm install --save mysql
 
 * One place models and associations definitions.
 
-* MySQL support only for now (support for PostgreSQL and MSSQL as soon as possible).
+* MySQL and PSQL support for now (support for MSSQL as soon as possible).
 
 
 ### Usage
@@ -115,13 +115,24 @@ $ npm install -g gulp && gulp docs
 ```
 
 ### Run Tests
-You need  edit **test/config.js** with your own database connection params, before run the steps below which are assuming that you created a database with the name sequelize_test.
+You need  edit **test/mysql/config.js** and **test/psql/config.js** with your own databases connection params, before run the steps below which are assuming that you will create a database with the name sequelize_test on each database.
 
 ```bash
 $ npm install gulp -g && npm install
 $ mysql -e 'create database sequelize_test;'
-$ gulp config
-$ cd test && ../node_modules/sequelize-cli/bin/sequelize db:migrate && cd ..
+$ psql  -c 'create database sequelize_test;' -U postgres
+
+# create mysql config files
+$ gulp config-mysql
+# test data for mysql
+$ ./node_modules/sequelize-cli/bin/sequelize db:migrate
+
+# create psql config files
+$ gulp config-psql
+# test data for postgres
+$ ./node_modules/sequelize-cli/bin/sequelize db:migrate
+
+# run test
 $ gulp test
 ```
 

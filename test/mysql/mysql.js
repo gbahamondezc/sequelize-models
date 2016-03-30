@@ -2,10 +2,10 @@
 
 const SequelizeModels = require("../../");
 const assert   = require("assert");
-var config     = require("../config.js");
+const config     = require("./config.js");
 var seqModels  = new SequelizeModels(config);
 
-describe("Queries tests", function() {
+describe("MySQL -> Queries tests", function() {
 
   var dbSchema;
 
@@ -21,7 +21,7 @@ describe("Queries tests", function() {
   });
 
 
-  it("Find user by id 1", function(done) {
+  it("MySQL -> Find user by id 1", function(done) {
 
     dbSchema.models.User.findById(1)
     .then( function(user) {
@@ -34,7 +34,7 @@ describe("Queries tests", function() {
   });
 
 
-  it("Find all profiles with name Technicians including his users", function(done) {
+  it("MySQL -> Find all profiles with name Technicians including his users", function(done) {
     dbSchema.models.Profile.findAll({
       where : {
         name  : "Technician"
@@ -53,7 +53,7 @@ describe("Queries tests", function() {
 
 
 
-  it("Find all users with name Gonzalo including his profiles", function(done) {
+  it("MySQL -> Find all users with name Gonzalo including his profiles", function(done) {
     dbSchema.models.User.findAll({
       where   : { name : "Gonzalo" },
       include : dbSchema.models.Profile

@@ -11,7 +11,10 @@ cache:
 
 before_script:
   - "mysql -e 'create database sequelize_test;'"
-  - "gulp config"
-  - "cd test && ../node_modules/sequelize-cli/bin/sequelize db:migrate && cd .."
+  - "psql  -c 'create database sequelize_test;' -U postgres"
+  - "gulp config-mysql"
+  - "./node_modules/sequelize-cli/bin/sequelize db:migrate"
+  - "gulp config-psql"
+  - "./node_modules/sequelize-cli/bin/sequelize db:migrate"
 
 script: "gulp"
