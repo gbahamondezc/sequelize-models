@@ -32,23 +32,23 @@ function stringSrc (filename, string) {
   return src;
 }
 
-gulp.task('clean-migrations', function() {
-  del('./migrations/*.js');
+gulp.task("clean-migrations", function() {
+  del("./migrations/*.js");
 });
 
-gulp.task('cp-config-psql', function() {
-   gulp.src('./migrations_data/postgres/**/*.js')
-   .pipe(gulp.dest('./migrations'));
-});
-
-
-gulp.task('cp-config-mysql', function() {
-   gulp.src('./migrations_data/mysql/**/*.js')
-   .pipe(gulp.dest('./migrations'));
+gulp.task("cp-config-psql", function() {
+  gulp.src("./migrations_data/postgres/**/*.js")
+    .pipe(gulp.dest("./migrations"));
 });
 
 
-gulp.task("config-mysql", ['clean-migrations', 'cp-config-mysql'], function() {
+gulp.task("cp-config-mysql", function() {
+  gulp.src("./migrations_data/mysql/**/*.js")
+    .pipe(gulp.dest("./migrations"));
+});
+
+
+gulp.task("config-mysql", ["clean-migrations", "cp-config-mysql"], function() {
   var jsonObject = {
     development : {
       username : configMySQL.connection.username,
@@ -64,7 +64,7 @@ gulp.task("config-mysql", ['clean-migrations', 'cp-config-mysql'], function() {
 });
 
 
-gulp.task("config-psql", ['clean-migrations', 'cp-config-psql'], function() {
+gulp.task("config-psql", ["clean-migrations", "cp-config-psql"], function() {
   var jsonObject = {
     development : {
       username : configPSQL.connection.username,
@@ -132,7 +132,6 @@ gulp.task("test", [ "pre-test" ], function (cb) {
     .pipe( istanbul.writeReports())
     .on( "end", function () {
       cb( mochaErr );
-      //process.exit();
     });
 });
 
