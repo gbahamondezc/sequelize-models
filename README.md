@@ -13,7 +13,13 @@ sequelize-models will try to load all your database tables and associations in S
 
 ```sh
 $ npm install --save sequelize-models
+
+# MySQL
 $ npm install --save mysql
+
+# PostgreSQL
+$ npm install --save pg
+$ npm install --save pg-hstore
 ```
 
 ### Features
