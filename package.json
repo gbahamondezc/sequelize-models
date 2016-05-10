@@ -1,6 +1,6 @@
 {
   "name": "sequelize-models",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Node.js SequelizeJS ORM model utilities",
   "homepage": "https://github.com/gbahamondez/sequelize-models",
   "author": {
