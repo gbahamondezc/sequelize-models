@@ -46,7 +46,6 @@
     "pg-hstore": "^2.3.1",
     "run-sequence": "^1.1.5",
     "sequelize-cli": "^2.3.1",
-    "sqlite3": "^3.1.1",
     "tedious": "^1.13.2"
   },
   "eslintConfig": {
