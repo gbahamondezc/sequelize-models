@@ -6,8 +6,10 @@ Node.js SequelizeJS ORM model utilities.
 sequelize-models will try to load all your database tables and associations in Sequelize JS models automatically, but if you want define your models explicitly,  just create a model file and sequelize-models will skip the models automatic definition for that table and will use your model file, use models.path to specify the models directory to read.
 
 
-### Warning
+### Warnings
 **Node.js 4.0** or latest is required  to use this module.
+
+sequelize-models is in active (but slow) development so feel free to report issues or submit a PR with fixes and enhancements.
 
 ### Installation
 
