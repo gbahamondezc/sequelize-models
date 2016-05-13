@@ -146,8 +146,7 @@ $ gulp test
 
 
 ## License
-
-MIT © [Gonzalo Bahamondez](https://github.com/gbahamondez)
+MIT
 
 [npm-image]: https://badge.fury.io/js/sequelize-models.svg
 [npm-url]: https://npmjs.org/package/sequelize-models
