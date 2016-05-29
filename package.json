@@ -27,7 +27,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "del": "^2.2.0",
-    "eslint-config-xo-space": "^0.13.0",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
@@ -49,7 +48,6 @@
     "tedious": "^1.13.2"
   },
   "eslintConfig": {
-    "extends": "xo-space",
     "env": {
       "mocha": true,
       "node": true,
