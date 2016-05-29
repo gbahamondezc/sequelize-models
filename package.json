@@ -1,6 +1,6 @@
 {
   "name": "sequelize-models",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Node.js SequelizeJS ORM model utilities",
   "homepage": "https://github.com/gbahamondez/sequelize-models",
   "author": {
@@ -27,7 +27,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "del": "^2.2.0",
-    "eslint-config-xo-space": "^0.7.0",
+    "eslint-config-xo-space": "^0.13.0",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
@@ -44,7 +44,7 @@
     "mysql": "~2.10.0",
     "pg": "^4.4.6",
     "pg-hstore": "^2.3.1",
-    "run-sequence": "^1.1.5",
+    "run-sequence": "^1.2.1",
     "sequelize-cli": "^2.3.1",
     "tedious": "^1.13.2"
   },
@@ -134,11 +134,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.3.3",
+    "bluebird": "^3.4.0",
     "co": "^4.6.0",
     "debug": "^2.2.0",
-    "lodash": "^4.5.1",
+    "lodash": "^4.13.1",
     "readdir-plus": "^0.4.1",
-    "sequelize": "3.23.0"
+    "sequelize": "^3.23.3"
   }
 }
