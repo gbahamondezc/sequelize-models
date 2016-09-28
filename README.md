@@ -19,7 +19,7 @@ sequelize-models is in active (but slow) development so feel free to report issu
 $ npm install --save sequelize-models
 
 # MySQL
-$ npm install --save mysql
+$ npm install --save mysql2
 
 # PostgreSQL
 $ npm install --save pg
