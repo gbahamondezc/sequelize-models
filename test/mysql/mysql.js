@@ -2,7 +2,7 @@
 
 const SequelizeModels = require("../../");
 const assert   = require("assert");
-const config     = require("./config.js");
+const config   = require("./config.js");
 var seqModels  = new SequelizeModels(config);
 
 describe("MySQL -> Queries tests", function() {

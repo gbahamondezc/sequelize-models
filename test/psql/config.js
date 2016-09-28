@@ -16,6 +16,7 @@ module.exports = {
     define : {
       freezeTableName : true,
       underscored     : true
-    }
+    },
+    logging : false
   }
 };
