@@ -9,7 +9,7 @@ sequelize-models will try to load all your database tables and associations in S
 ### Warnings
 **Node.js 4.0** or latest is required  to use this module.
 
-**Sequelize Models Version 1.3** uses SequelizeJS **4.0.0 which is currently unstable**
+**Sequelize Models Version 1.3.x** uses SequelizeJS **4.0.0 which is currently unstable**
 
 sequelize-models is in active (but slow) development so feel free to report issues or submit a PR with fixes and enhancements.
 
