@@ -2,11 +2,11 @@
   "name": "sequelize-models",
   "version": "1.3.1",
   "description": "Node.js SequelizeJS ORM model utilities",
-  "homepage": "https://github.com/gbahamondez/sequelize-models",
+  "homepage": "https://github.com/gbahamondezc/sequelize-models",
   "author": {
     "name": "Gonzalo Bahamondez",
     "email": "gonzalo.bahamondez@symphony.cl",
-    "url": "https://github.com/gbahamondez"
+    "url": "https://github.com/gbahamondezc"
   },
   "files": [
     "lib"
@@ -124,7 +124,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gbahamondez/sequelize-models.git"
+    "url": "git+https://github.com/gbahamondezc/sequelize-models.git"
   },
   "scripts": {
     "prepublish": "gulp prepublish",

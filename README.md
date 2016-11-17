@@ -1,5 +1,5 @@
 # sequelize-models
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondez/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondez/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondez/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondez/sequelize-models)
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/gbahamondezc/sequelize-models/badge.svg?branch=master)](https://coveralls.io/github/gbahamondezc/sequelize-models?branch=master) [![bitHound Code](https://www.bithound.io/github/gbahamondezc/sequelize-models/badges/code.svg)](https://www.bithound.io/github/gbahamondezc/sequelize-models)
 
 Node.js SequelizeJS ORM model utilities.
 
@@ -152,9 +152,9 @@ MIT
 
 [npm-image]: https://badge.fury.io/js/sequelize-models.svg
 [npm-url]: https://npmjs.org/package/sequelize-models
-[travis-image]: https://travis-ci.org/gbahamondez/sequelize-models.svg?branch=master
-[travis-url]: https://travis-ci.org/gbahamondez/sequelize-models
-[daviddm-image]: https://david-dm.org/gbahamondez/sequelize-models.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/gbahamondez/sequelize-models
-[coveralls-image]: https://coveralls.io/repos/gbahamondez/sequelize-models/badge.svg
-[coveralls-url]: https://coveralls.io/r/gbahamondez/sequelize-models
+[travis-image]: https://travis-ci.org/gbahamondezc/sequelize-models.svg?branch=master
+[travis-url]: https://travis-ci.org/gbahamondezc/sequelize-models
+[daviddm-image]: https://david-dm.org/gbahamondezc/sequelize-models.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/gbahamondezc/sequelize-models
+[coveralls-image]: https://coveralls.io/repos/gbahamondezc/sequelize-models/badge.svg
+[coveralls-url]: https://coveralls.io/r/gbahamondezc/sequelize-models
