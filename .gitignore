@@ -1,11 +1,8 @@
 npm-debug.log
 node_modules
-.npmignore
 .DS_Store
 coverage
 .vscode
-config
 .idea
-docs
-migrations
+storage
 

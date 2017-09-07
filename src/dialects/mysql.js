@@ -1,0 +1,221 @@
+const _ = require('lodash');
+const co = require('co');
+const utils = require('../utils.js');
+const CustomTypes = require('./custom-datatypes.js');
+
+/**
+ * MySQL adapter
+ */
+
+class MySQLDialect {
+
+
+  /**
+   * MySQL Adapter constructor
+   * @param {Object} Sequelize a sequelize js instance
+   * @param {Object} connection a db connections created with sequelize
+   * @param {Object} options a set of configuration options
+   * @constructor
+   */
+
+  constructor(Sequelize, connection, opts) {
+
+    this.models = {};
+    this.config = opts;
+
+    this.typeMap = {
+      varchar: Sequelize.STRING,
+      text: Sequelize.TEXT,
+      int: Sequelize.INTEGER,
+      datetime: Sequelize.DATE,
+      decimal: Sequelize.DECIMAL,
+      double: Sequelize.DOUBLE,
+      string: Sequelize.STRING,
+      date: Sequelize.DATE,
+      integer: Sequelize.INTEGER,
+      tinyint: Sequelize.BOOLEAN,
+      timestamp: CustomTypes.TIMESTAMP,
+      char: Sequelize.CHAR,
+      float: Sequelize.FLOAT,
+      time: Sequelize.TIME,
+      smallint: Sequelize.INTEGER,
+      mediumint: Sequelize.INTEGER,
+      bigint: Sequelize.BIGINT,
+      year: Sequelize.INTEGER,
+      blob: Sequelize.INTEGER,
+      tinyblob: Sequelize.INTEGER,
+      enum: Sequelize.ENUM
+    };
+
+    /** Sequelize connected instance */
+    this.connection = connection;
+
+    /** MySQL query to get all table information */
+    this.tablesQuery = `SELECT table_name as name, column_name,
+      data_type, column_key, extra
+    FROM INFORMATION_SCHEMA.COLUMNS  WHERE TABLE_SCHEMA = ?`;
+
+
+    /** MySQL query to get all relation information */
+    this.relationsQuery = `SELECT * FROM INFORMATION_SCHEMA.key_column_usage
+      WHERE referenced_table_schema = ?`;
+  }
+
+
+
+  /**
+   * Fetch data of tables, relations, and attributes from MySQL Schema.
+   * @param {Array} modelDefs - model definitions obtained from the defined models path
+   * @param {Boolean} autoLoad - flag which indicates if  the schema should be read automatically or not
+   * @return {Promise} a promise that will be resolved when all data is  fetched.
+   */
+
+  loadModels(modelDefs, autoload) {
+
+    let _this = this;
+
+    return co(function *() {
+
+      var yieldable = {
+        tables: [],
+        associations: []
+      };
+
+      if (autoload) {
+        yieldable.tables = _this.connection.query(_this.tablesQuery, {
+          replacements: [_this.config.schema],
+          type: _this.connection.QueryTypes.SELECT
+        });
+
+        yieldable.associations = _this.connection.query(_this.relationsQuery, {
+          replacements: [_this.config.schema],
+          type: _this.connection.QueryTypes.SELECT
+        });
+      }
+
+      let schemaData = yield yieldable;
+
+
+      /** Get schema tables and relations in parallel */
+      _this.models = _this.getModels(schemaData.tables, modelDefs);
+
+      // associations from schema
+      schemaData.associations.forEach(association => {
+
+        let modelName = utils.camelize(association.TABLE_NAME);
+        let attribute = association.COLUMN_NAME;
+        let referencedModelName = utils.camelize(
+          association.REFERENCED_TABLE_NAME
+        );
+
+        // let referencedAttribute = association["REFERENCED_COLUMN_NAME"];
+
+        _this.models[modelName].belongsTo(_this.models[referencedModelName], {
+          foreignKey: { name: attribute }
+        });
+
+        _this.models[referencedModelName].hasMany(
+          _this.models[modelName]
+        );
+
+      });
+
+      // Associations from model file
+      modelDefs.forEach(modelDef => {
+
+        if (!modelDef.object.associations) {
+          return;
+        }
+
+        modelDef.object.associations.forEach(assoc => {
+
+          var mainModel = _this.models[modelDef.name];
+          var targetModel = _this.models[assoc.target];
+
+          if (!mainModel) {
+            throw new Error(`Model [${modelDef.name}] Not found.`);
+          }
+
+          if (!targetModel) {
+
+            throw new Error(
+              `Target Model [${assoc.target}] Not found for association ${assoc.type}
+                with [${modelDef.name} model.`
+            );
+          }
+
+          _this.models[modelDef.name][assoc.type](
+            _this.models[assoc.target],
+            assoc.options
+          );
+
+        });
+      });
+      return _this.models;
+    });
+  }
+
+
+  /**
+   * Build and return Sequelize Models instances from MySQL Database
+   * @param  {Array} tables - Array of tables => attributes obtained autmatically from the schema
+   * @param  {Array} modelDefs - model definitions obtained from the defined models path
+   * @return {Object} a  object with each model wich represent a database table (key name)
+   */
+
+  getModels(tables, modelDefs) {
+
+    var excludeTables = _.map(modelDefs, 'object.tableName');
+    tables = utils.filterTables(tables, excludeTables);
+
+    let tableNames = _.uniq(_.map(tables, 'name'));
+    let models = {};
+
+    // Direct from database schema
+    tableNames.map(name => {
+
+      let results = _.filter(tables, { name: name });
+      let attribs = {};
+
+      results.map(res => {
+        attribs[res.column_name] = {
+          type: this.typeMap[res.data_type],
+          primaryKey: ('PRI' === res.column_key),
+          autoIncrement: ('auto_increment' === res.extra)
+        };
+      });
+
+      models[utils.camelize(name)] = this.connection.define(
+        name, attribs
+      );
+    });
+
+
+
+    // From model files reading
+    modelDefs.forEach(modelDef => {
+
+      var attributes = Object.keys(modelDef.object.attributes);
+
+      attributes.forEach(attr => {
+        modelDef.object.attributes[attr].type =
+          this.typeMap[modelDef.object.attributes[attr].type];
+      });
+
+      models[modelDef.name] = this.connection.define(
+        modelDef.object.tableName,
+        modelDef.object.attributes, {
+          validate: modelDef.object.validate || {},
+          indexes: modelDef.object.indexes || []
+        }
+      );
+    });
+
+    return models;
+  }
+
+}
+
+
+/** Expose class */
+module.exports = MySQLDialect;

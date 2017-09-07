@@ -1,6 +1,4 @@
-"use strict";
-
-var _ = require("lodash");
+var _ = require('lodash');
 
 /**
  * Filter tables by column or table name
@@ -11,11 +9,11 @@ var _ = require("lodash");
 module.exports = {
 
   filterTables : function(tables, exclude) {
-    let exNames   = ["SequelizeMeta"].concat(exclude);
+    let exNames   = ['SequelizeMeta'].concat(exclude);
 
     let exColumns = [
-      "updatedAt", "updated_at",
-      "createdAt", "created_at"
+      'updatedAt', 'updated_at',
+      'createdAt', 'created_at'
     ];
 
     _.remove(tables, table => {
@@ -34,9 +32,9 @@ module.exports = {
    */
 
   camelize : function(str) {
-    // console.log("to camelize ", str);
+    // console.log('to camelize ', str);
     return str.replace(/(?:^|[-_])(\w)/g, (_, c) => {
-      return c ? c.toUpperCase() : "";
+      return c ? c.toUpperCase() : '';
     });
   }
 

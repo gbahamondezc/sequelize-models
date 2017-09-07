@@ -1,0 +1,14 @@
+npm-debug.log
+.DS_Store
+coverage
+.vscode
+env
+.idea
+migrations
+docs
+storage
+Dockerfile
+docker-compose.yaml
+.travis.yml
+.eslintrc
+

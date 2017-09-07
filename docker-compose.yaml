@@ -1,0 +1,44 @@
+version: "2"
+
+services:
+  # Test
+  test:
+    container_name: sequelize_models_test
+    tty: true
+    env_file:
+      - env/mysql.env
+      - env/postgres.env
+    links:
+      - dbpostgres
+      - dbmysql
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+        - "./src:/opt/app/src"
+    command: dockerize -wait tcp://dbpostgres:5432 -wait tcp://dbmysql:3306  /bin/sh -c "npm run migrate:pg:docker && npm run migrate:my:docker && npm run test:watch"
+    # command: /bin/sh -c "touch ./src/prueba && echo hola > ./src/prueba"
+    # command: dockerize -wait tcp://dbpostgres:5432 -wait tcp://dbmysql:3306  /bin/sh -c "npm run migrate:pg:docker && npm run test:watch"
+
+  # PostgreSQL database service configuration
+  dbpostgres:
+    container_name: sequelize_models_pg
+    image: postgres
+    volumes:
+      - ./storage/postgres/data:/var/lib/postgresql/data
+    env_file:
+      - env/postgres.env
+    ports:
+      - "5432:5432"
+
+
+  # MySQL database service configuration
+  dbmysql:
+    container_name: sequelize_models_mysql
+    image: mysql
+    volumes:
+      - ./storage/mysql/data:/var/lib/mysql
+    env_file:
+      - env/mysql.env
+    ports:
+      - "3306:3306"
