@@ -1,5 +1,5 @@
 {
-  "name": "@cond/sequelize-model",
+  "name": "@cond/sequelize-models",
   "version": "0.0.1",
   "description": "Node.js SequelizeJS ORM model utilities",
   "homepage": "https://github.com/gbahamondezc/sequelize-models",
