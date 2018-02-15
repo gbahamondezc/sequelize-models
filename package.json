@@ -1,6 +1,6 @@
 {
   "name": "@cond/sequelize-models",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node.js SequelizeJS ORM model utilities",
   "homepage": "https://github.com/gbahamondezc/sequelize-models",
   "author": "Gonzalo Bahamondez <gonzalo.bahamondez@symphony.cl> (https://github.com/gbahamondezc)",
