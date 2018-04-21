@@ -5,7 +5,7 @@ postgres:
   env_file:
     - ./.env
   ports:
-    - "5432:5432"
+    - "5438:5432"
 
 
 # MySQL test database
@@ -17,4 +17,4 @@ mysql:
   env_file:
     - ./.env
   ports:
-    - "3306:3306"
+    - "3308:3306"

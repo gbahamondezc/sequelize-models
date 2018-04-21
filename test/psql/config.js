@@ -6,7 +6,7 @@ module.exports = {
     username: "sequelize_models_db_user",
     schema: "sequelize_models_db",
     password: "",
-    port: 5432
+    port: 5438
   },
   models: {
     autoLoad: true,

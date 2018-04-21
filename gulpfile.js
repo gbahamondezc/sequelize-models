@@ -55,7 +55,8 @@ gulp.task("config-mysql", ["clean-migrations", "cp-config-mysql"], function() {
       password : configMySQL.connection.password,
       database : configMySQL.connection.schema,
       host     : configMySQL.connection.host,
-      dialect  : configMySQL.connection.dialect
+      dialect  : configMySQL.connection.dialect,
+      port: 3308
     }
   };
   var jsString = JSON.stringify(jsonObject, null, 2);
@@ -71,7 +72,8 @@ gulp.task("config-psql", ["clean-migrations", "cp-config-psql"], function() {
       password : configPSQL.connection.password,
       database : configPSQL.connection.schema,
       host     : configPSQL.connection.host,
-      dialect  : configPSQL.connection.dialect
+      dialect  : configPSQL.connection.dialect,
+      port: 5438
     }
   };
   var jsString = JSON.stringify(jsonObject, null, 2);
