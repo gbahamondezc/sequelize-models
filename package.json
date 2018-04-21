@@ -1,6 +1,6 @@
 {
-  "name": "@cond/sequelize-models",
-  "version": "0.0.4",
+  "name": "sequelize-models",
+  "version": "1.3.2",
   "description": "Node.js SequelizeJS ORM model utilities",
   "homepage": "https://github.com/gbahamondezc/sequelize-models",
   "author": "Gonzalo Bahamondez <gonzalo.bahamondez@symphony.cl> (https://github.com/gbahamondezc)",
@@ -128,7 +128,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@cond/sequelize": "0.0.0-development",
+    "sequelize": "4.0.0-2"
     "bluebird": "^3.4.0",
     "co": "^4.6.0",
     "debug": "^2.2.0",
