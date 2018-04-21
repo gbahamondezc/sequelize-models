@@ -132,11 +132,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.4.0",
-    "co": "^4.6.0",
-    "debug": "^2.2.0",
-    "lodash": "^4.13.1",
-    "readdir-plus": "^0.4.1",
-    "sequelize": "^4.0.0-2"
+    "bluebird": "3.4.0",
+    "co": "4.6.0",
+    "debug": "2.2.0",
+    "lodash": "4.13.1",
+    "readdir-plus": "0.4.1",
+    "sequelize": "4.0.0-2"
   }
 }
