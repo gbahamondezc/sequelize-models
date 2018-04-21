@@ -129,16 +129,19 @@ You need  edit **test/mysql/config.js** and **test/psql/config.js** with your ow
 
 ```bash
 $ npm install gulp -g && npm install
-$ mysql -e 'create database sequelize_test;'
-$ psql  -c 'create database sequelize_test;' -U postgres
+
+# Create and start development docker databases (needs docker  & docker-compose installed)
+$ npm run db:up
 
 # create mysql config files
 $ gulp config-mysql
+
 # test data for mysql
 $ ./node_modules/sequelize-cli/bin/sequelize db:migrate
 
 # create psql config files
 $ gulp config-psql
+
 # test data for postgres
 $ ./node_modules/sequelize-cli/bin/sequelize db:migrate
 

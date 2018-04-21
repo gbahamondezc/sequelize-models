@@ -23,6 +23,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "del": "^2.2.0",
+    "dotenv": "^5.0.1",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
@@ -36,7 +37,7 @@
     "gulp-util": "^3.0.7",
     "jsdoc": "^3.4.0",
     "minami": "^1.1.1",
-    "mysql2": "^1.1.0",
+    "mysql2": "^1.5.3",
     "pg": "^4.4.6",
     "pg-hstore": "^2.3.1",
     "run-sequence": "^1.2.1",
@@ -124,7 +125,8 @@
   },
   "scripts": {
     "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "test": "gulp",
+    "db:up": "docker-compose -f ./docker-compose.dev.yml up -d"
   },
   "license": "MIT",
   "dependencies": {

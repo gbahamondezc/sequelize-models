@@ -1,5 +1,6 @@
 language: node_js
 node_js:
+  - v8
   - v6
   - v5
   - v4
@@ -11,8 +12,8 @@ cache:
     - node_modules
 
 before_script:
-  - "mysql -e 'create database sequelize_test;'"
-  - "psql  -c 'create database sequelize_test;' -U postgres"
+  - "mysql -e 'create database sequelize_models_db;'"
+  - "psql  -c 'create database sequelize_models_db;' -U sequelize_models_db_user"
   - "gulp config-mysql"
   - "./node_modules/sequelize-cli/bin/sequelize db:migrate"
   - "gulp config-psql"

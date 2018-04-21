@@ -8,4 +8,5 @@ config
 .idea
 docs
 migrations
-
+yarn-error.log
+yarn.lock
