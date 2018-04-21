@@ -16,7 +16,7 @@ sequelize-models is in active (but slow) development so feel free to report issu
 ### Installation
 
 ```sh
-$ npm install --save @cond/sequelize-models
+$ npm install --save sequelize-models
 
 # MySQL
 $ npm install --save mysql2
