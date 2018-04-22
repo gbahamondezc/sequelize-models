@@ -145,6 +145,7 @@
   },
   "peerDependencies": {
     "pg": "7.4.1",
-    "pg-hstore": "2.3.2"
+    "pg-hstore": "2.3.2",
+    "mysql2": "1.5.3"
   }
 }
