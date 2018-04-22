@@ -3,15 +3,17 @@
 
 Node.js SequelizeJS ORM model utilities.
 
-sequelize-models will try to load all your database tables and associations in Sequelize JS models automatically, but if you want define your models explicitly,  just create a model file and sequelize-models will skip the models automatic definition for that table and will use your model file, use models.path to specify the models directory to read.
+sequelize-models will try to load all your database tables and associations as Sequelize JS models automatically, but if you want define your models explicitly, just need to create a model file and sequelize-models will skip the models automatic definition for that table and will use your model file, use models.path to specify the models directory to read.
 
 
 ### Warnings
 **Node.js 4.0** or latest is required  to use this module.
 
-**Sequelize Models Version 1.3.x** uses SequelizeJS **4.0.0 which is currently unstable**
+**Sequelize Models Version 1.4.0** uses SequelizeJS **4.37.x which is the current stable version**
 
-sequelize-models is in active (but slow) development so feel free to report issues or submit a PR with fixes and enhancements.
+sequelize-models is a bit old project, and i'm planning rewrite from scratch to use the latest language features, feel free to suggest features creating a issue with the respective description.
+
+
 
 ### Installation
 
@@ -115,14 +117,18 @@ module.exports = {
   validate : {},
   indexes  : []
 };
-
-
 ```
+
+
+### Contributing
+Feel free to submit a PR or create an issue for any bug fixes or feature requests, just remember if you add new features or fix a bug, **please provide the respective tests for the case**.
+
 
 ### Build and open code documentation
 ```bash
 $ npm install -g gulp && gulp docs
 ```
+
 
 ### Run Tests
 You need  edit **test/mysql/config.js** and **test/psql/config.js** with your own databases connection params, before run the steps below which are assuming that you will create a database with the name sequelize_test on each database.

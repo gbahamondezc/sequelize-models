@@ -1,70 +1,74 @@
 "use strict";
 
 const SequelizeModels = require("../../");
-const assert   = require("assert");
-const config   = require("./config.js");
-var seqModels  = new SequelizeModels(config);
+const assert = require("assert");
+const config = require("./config.js");
+var seqModels = new SequelizeModels(config);
 
-describe("MySQL -> Queries tests", function() {
+describe("MySQL -> Queries tests", function () {
 
   var dbSchema;
 
-  before( function(done) {
+  before(function (done) {
     seqModels.getSchema()
-    .then( schema => {
-      dbSchema = schema;
-      return done();
-    })
-    .catch( err => {
-      return done(err);
-    });
+      .then(schema => {
+        dbSchema = schema;        
+        return done();
+      })
+      .catch(err => {
+        return done(err);
+      });
   });
 
 
-  it("MySQL -> Find user by id 1", function(done) {
+  it("MySQL -> Find user by id 1", function (done) {
 
     dbSchema.models.User.findById(1)
-    .then( function(user) {
-      assert( user.name === "Gonzalo" );
-      done();
-    })
-    .catch(function(err) {
-      return done(err);
-    });
+      .then(function (user) {
+        assert(user.name === "Gonzalo");
+        done();
+      })
+      .catch(function (err) {
+        return done(err);
+      });
   });
 
 
-  it("MySQL -> Find all profiles with name Technicians including his users", function(done) {
+  it("MySQL -> Find all profiles with name Technicians including his users", function (done) {
     dbSchema.models.Profile.findAll({
-      where : {
-        name  : "Technician"
+      where: {
+        name: "Technician"
       },
-      include : dbSchema.models.User
+      include: dbSchema.models.User
     })
-    .then( profiles => {
-      var profile = profiles[0];
-      assert(profile.name === "Technician" && profile.users.length === 2);
-      return done();
-    })
-    .catch( err => {
-      return done(err);
-    });
+      .then(profiles => {
+        var profile = profiles[0];
+        assert(profile.name === "Technician" && profile.users.length === 2);
+        return done();
+      })
+      .catch(err => {
+        return done(err);
+      });
   });
 
 
 
-  it("MySQL -> Find all users with name Gonzalo including his profiles", function(done) {
+  it("MySQL -> Find all users with name Gonzalo including his profiles", function (done) {
     dbSchema.models.User.findAll({
-      where   : { name : "Gonzalo" },
-      include : dbSchema.models.Profile
+      where: { name: "Gonzalo" },
+      include: dbSchema.models.Profile
     })
-    .then( users => {
-      var user = users[0];
-      assert(user.name === "Gonzalo" && user.profile.name === "Technician");
-      return done();
-    })
-    .catch( err => {
-      return done(err);
-    });
+      .then(users => {
+        var user = users[0];
+        assert(user.name === "Gonzalo" && user.profile.name === "Technician");
+        return done();
+      })
+      .catch(err => {
+        return done(err);
+      });
+  });
+
+  after(function() {
+    dbSchema.db.close();
   });
 });

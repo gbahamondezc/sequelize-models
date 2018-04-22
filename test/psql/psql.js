@@ -68,4 +68,9 @@ describe("PSQL -> Queries tests", function() {
       return done(err);
     });
   });
+
+  after(function () {
+    dbSchema.db.close();
+  });
+  
 });
